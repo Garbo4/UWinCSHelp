@@ -12,7 +12,6 @@ import androidx.core.content.ContextCompat;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import java.util.Calendar;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class CurrentCourses extends AppCompatActivity {
@@ -20,7 +19,6 @@ public class CurrentCourses extends AppCompatActivity {
     EditText et_course, et_time;
     Button btn_add, btn_display, btn_home;
     TextView tv_display;
-
     DBCourseHelper courseHelper;
 
     @Override
@@ -40,22 +38,16 @@ public class CurrentCourses extends AppCompatActivity {
         btn_add = findViewById(R.id.button_add);
         btn_display = findViewById(R.id.button_display);
         btn_home = findViewById(R.id.button_home);
-
         tv_display = findViewById(R.id.textView_display);
 
         Spinner spinner_day;
         spinner_day = findViewById(R.id.spinner_day);
         String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(
-                        this,
-                        android.R.layout.simple_spinner_item,
-                        days);
-        adapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, days);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_day.setAdapter(adapter);
 
-        DBCourseHelper courseHelper = new DBCourseHelper(this); // increase version
+        DBCourseHelper courseHelper = new DBCourseHelper(this); // increase version so db dont cause error
 
         btn_add.setOnClickListener(v -> {
             String course = et_course.getText().toString();
@@ -70,7 +62,6 @@ public class CurrentCourses extends AppCompatActivity {
             }
             if(row >= 0){
                 scheduleNotification(course, day, time);
-
                 Toast.makeText(this, "Course Added", Toast.LENGTH_LONG).show();
             }
         });
@@ -88,13 +79,8 @@ public class CurrentCourses extends AppCompatActivity {
             finish();
         });
     }
-    private void scheduleNotification(
-            String course,
-            String day,
-            String time){
-
+    private void scheduleNotification(String course, String day, String time){
         String[] parts = time.split(":");
-
         int hour = Integer.parseInt(parts[0]);
         int minute = Integer.parseInt(parts[1]);
 
@@ -112,20 +98,15 @@ public class CurrentCourses extends AppCompatActivity {
     }
 
     private int getDayNumber(String day){
-
         switch(day){
             case "Tuesday":
                 return Calendar.TUESDAY;
-
             case "Wednesday":
                 return Calendar.WEDNESDAY;
-
             case "Thursday":
                 return Calendar.THURSDAY;
-
             case "Friday":
                 return Calendar.FRIDAY;
-
             default:
                 return Calendar.MONDAY;
         }

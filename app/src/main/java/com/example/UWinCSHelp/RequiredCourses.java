@@ -6,14 +6,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.content.Intent;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RequiredCourses extends AppCompatActivity {
     Button btn_home;
     LinearLayout checklistLayout;
 
-    // Example list of required courses
+    //llist of required courses
     String[] requiredCourses = {
             "COMP-1000",
             "COMP-1400",
@@ -49,11 +48,10 @@ public class RequiredCourses extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_required_courses);
-
         checklistLayout = findViewById(R.id.checklistLayout);
         btn_home = findViewById(R.id.button_home);
 
-        // Add checkboxes dynamically
+        // checkboxes get added  dynamically
         for (String course : requiredCourses) {
             CheckBox checkBox = new CheckBox(this);
             checkBox.setText(course);
@@ -63,11 +61,9 @@ public class RequiredCourses extends AppCompatActivity {
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(RequiredCourses.this, MainActivity.class);
-
                 startActivity(intent);
-                finish(); // closes current screen
+                finish(); // closes screen
             }
         });
     }

@@ -6,9 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,7 +30,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             button = itemView.findViewById(R.id.cardButton);
             imageView = itemView.findViewById(R.id.cardImage);
             cardView = itemView.findViewById(R.id.cardView);
@@ -48,13 +45,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerAdapter.ViewHolder holder, int position) {
-
         CardItem item = list.get(position);
 
         holder.button.setText(item.getButtonText());
         holder.imageView.setImageResource(item.getImage());
-
-        // clicking Card opens activity
+        // clicking card opens activity
         holder.cardView.setOnClickListener(v -> {
             int currentPosition = holder.getAdapterPosition();
             if(currentPosition == 0){
@@ -71,8 +66,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             }
         });
     }
-
-    // show 4 cards
+    // show all cards
     @Override
     public int getItemCount() {
         return list.size();

@@ -1,7 +1,6 @@
 package com.example.UWinCSHelp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -27,10 +26,7 @@ public class PastCourses extends AppCompatActivity{
         btn_delete = findViewById(R.id.button_delete);
         btn_display = findViewById(R.id.button_display);
         btn_edit = findViewById(R.id.button_edit);
-
-        // ADD THIS LINE HERE
         btn_home = findViewById(R.id.button_home);
-
         tv_display = findViewById(R.id.textView_display);
 
         DBCourseHelper courseHelper = new DBCourseHelper(this);
@@ -87,14 +83,9 @@ public class PastCourses extends AppCompatActivity{
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(
-                        PastCourses.this,
-                        MainActivity.class
-                );
-
+                Intent intent = new Intent(PastCourses.this, MainActivity.class);
                 startActivity(intent);
-                finish(); // closes current screen
+                finish(); //closes screen
             }
         });
     }

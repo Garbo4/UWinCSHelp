@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- TOP IMAGE (separate from cards) -->
+    <!-- image seprate from cards -->
     <ImageView
         android:id="@+id/topImage"
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/uw_cs_logo" />
 
-    <!-- Your CARD LIST -->
+    <!-- card list -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

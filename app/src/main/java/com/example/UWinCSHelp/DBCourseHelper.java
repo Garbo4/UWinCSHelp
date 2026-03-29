@@ -9,9 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DBCourseHelper extends SQLiteOpenHelper {
-
     private static final String DB_NAME = "test_database";
-    private static final int DB_VERSION = 15; // bump this if schema changes
+    private static final int DB_VERSION = 15; // change for no db overlap
 
     public DBCourseHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -21,7 +20,6 @@ public class DBCourseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String query = "CREATE TABLE course(_id INTEGER PRIMARY KEY AUTOINCREMENT, course TEXT, grade TEXT)";
         sqLiteDatabase.execSQL(query);
-
         String query2 = "CREATE TABLE current_course(" + "_id INTEGER PRIMARY KEY AUTOINCREMENT," + "course TEXT," + "day TEXT," +"time TEXT)";
         sqLiteDatabase.execSQL(query2);
     }
@@ -30,7 +28,6 @@ public class DBCourseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS course");
         db.execSQL("DROP TABLE IF EXISTS current_course");
-
         onCreate(db);
     }
     public long addData(String courseInput, String gradeInput){
